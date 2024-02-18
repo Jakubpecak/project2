@@ -1,14 +1,21 @@
 @use '@angular/material' as mat;
 @include mat.core();
-$project2-primary: mat.define-palette(mat.$indigo-palette);
-$project2-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-$project2-warn: mat.define-palette(mat.$red-palette);
+$project2-primary: mat.define-palette(mat.$orange-palette, 700);
+$project2-accent: mat.define-palette(mat.$pink-palette);
+$project2-warn: mat.define-palette(mat.$red-palette, 50);
+
+$project2-typography: mat.define-typography-config(
+   $font-family: 'Poppins'
+);
+
 $project2-theme: mat.define-light-theme((
   color: (
     primary: $project2-primary,
     accent: $project2-accent,
-    warn: $project2-warn,
-  )
+    warn: $project2-warn
+  ),
+    typography: $project2-typography,
+    density: 0
 ));
 
 @include mat.all-component-themes($project2-theme);

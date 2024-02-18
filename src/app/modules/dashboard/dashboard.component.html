@@ -1,1 +1,28 @@
-<button mat-stroked-button color="primary">Primary</button>
+<div class="dashboard">
+    <div class="dashboard__start" @slideInOut>
+        <mat-tab-group mat-stretch-tabs="true" mat-align-tabs="center" [backgroundColor]="'primary'" [color]="'warn'">
+            <mat-tab label="Home">
+                <div class="flex flex-col p-20">
+                    <h1 class="pb-10"><span>Finanse</span>App</h1>
+                    <h2>
+                        To platforma do zarządzania finansami osobistymi, oferująca moduły do:
+                    </h2>
+                    <ul style="list-style-type: disc;" class="pl-10 pt-5 pb-5">
+                        <li>monitorowania budżetu</li>
+                        <li>analizy wydatków</li>
+                        <li>bezpiecznego logowania</li>
+                        <li>zarządzania profilem</li>
+                        <li>otrzymywania powiadomień o finansach</li>
+                    </ul>
+                    <h2>
+                        oraz umożliwia łatwe śledzenie finansów, edycję transakcji, 
+                        generowanie raportów i dostosowywanie ustawień użytkownika. Zapewnia kontrolę nad finansami 
+                        dzięki szczegółowym statystykom i powiadomieniom o budżecie.
+                    </h2>
+                </div>
+            </mat-tab>
+            <mat-tab label="Login">Content 2</mat-tab>
+            <mat-tab label="Sign up">Content 3</mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

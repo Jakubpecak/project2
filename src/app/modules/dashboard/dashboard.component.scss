@@ -1,0 +1,21 @@
+:host {
+    .dashboard {
+        &__start {
+            position: absolute;
+            left: 50%;
+            top: 40%;
+            transform: translate(-50%, -50%);
+            max-width: 1200px;
+            width: 100%;
+            background-color: #3F3F47;
+            height: 500px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        span {
+            color:#f57c00;
+            font-size: 25px;
+        }
+    }
+}

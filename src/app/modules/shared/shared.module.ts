@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { FooterComponent } from './components/footer/footer.component';
 import {MatButtonModule} from '@angular/material/button';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -12,13 +13,15 @@ import {MatButtonModule} from '@angular/material/button';
   ],
   imports: [
     CommonModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTabsModule
 
   ],
   exports: [
     NavigationComponent,
     FooterComponent,
-    MatButtonModule
+    MatButtonModule,
+    MatTabsModule
   ]
 })
 export class SharedModule { }

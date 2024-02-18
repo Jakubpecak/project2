@@ -13,7 +13,16 @@ module.exports = {
       },
       className: {
         'custom-transform': 'transform: rotate(45deg);',
-      }
+      },
+      keyframes: {
+        slideIn: {
+          '0%': { transform: 'translateX(-200%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+      },
+      animation: {
+        slideIn: 'slideIn 1s ease-out forwards',
+      },
     },
   },
   plugins: [],
