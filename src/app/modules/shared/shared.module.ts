@@ -5,25 +5,35 @@ import { FooterComponent } from './components/footer/footer.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTabsModule} from '@angular/material/tabs';
 import { GalleryComponent } from './components/gallery/gallery.component';
+import { GalleryModule } from 'ng-gallery';
+import { ChartComponent } from './components/chart/chart.component';
+import { BaseChartDirective } from 'ng2-charts';
+
 
 
 @NgModule({
   declarations: [
     NavigationComponent,
     FooterComponent,
-    GalleryComponent
+    GalleryComponent,
+    ChartComponent
   ],
   imports: [
     CommonModule,
     MatButtonModule,
-    MatTabsModule
-
+    MatTabsModule,
+    GalleryModule,
+    BaseChartDirective
   ],
   exports: [
     NavigationComponent,
     FooterComponent,
     MatButtonModule,
-    MatTabsModule
+    MatTabsModule,
+    GalleryModule,
+    GalleryComponent,
+    ChartComponent,
+    BaseChartDirective
   ]
 })
 export class SharedModule { }
