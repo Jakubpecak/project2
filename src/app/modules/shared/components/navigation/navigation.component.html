@@ -1,0 +1,13 @@
+<nav class="flex justify-between items-center z-10 w-full lg:px-20 bg-gray-200" [ngClass]="{'fixed' : scroll}">
+    <a routerLink="/">
+        <img src="/assets/images/logo.png" alt="logo" class="logo">
+    </a>
+    <div routerLink="/login">
+        test
+    </div>
+    <mat-tab-group>
+        <mat-tab [label]="'Dashboard'"></mat-tab>
+        <mat-tab [label]="link.label" *ngFor="let link of navLinks"></mat-tab>
+        <mat-tab [label]="'Login'"></mat-tab>
+    </mat-tab-group>
+</nav>

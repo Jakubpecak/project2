@@ -8,6 +8,7 @@ import { GalleryComponent } from './components/gallery/gallery.component';
 import { GalleryModule } from 'ng-gallery';
 import { ChartComponent } from './components/chart/chart.component';
 import { BaseChartDirective } from 'ng2-charts';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -20,6 +21,7 @@ import { BaseChartDirective } from 'ng2-charts';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     MatButtonModule,
     MatTabsModule,
     GalleryModule,
