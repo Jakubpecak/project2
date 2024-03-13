@@ -2,9 +2,6 @@
     <a routerLink="/">
         <img src="/assets/images/logo.png" alt="logo" class="logo">
     </a>
-    <div routerLink="/login">
-        test
-    </div>
     <mat-tab-group>
         <mat-tab [label]="'Dashboard'"></mat-tab>
         <mat-tab [label]="link.label" *ngFor="let link of navLinks"></mat-tab>
