@@ -1,0 +1,17 @@
+:host {
+    .home, .flat {
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+    .single-offer {
+        width: 200px;
+        height: 200px;
+        .icon-box, .text-box {
+            i {
+                font-size: 25px;
+            }
+        }
+    }
+}

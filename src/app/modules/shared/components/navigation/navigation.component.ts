@@ -10,12 +10,15 @@ export class NavigationComponent {
   navLinks = [
     {
         label: 'Properties',
+        icon: 'fa-solid fa-city',
         link: '/properties'
     }, {
         label: 'Calculator',
+        icon: 'fa-solid fa-calculator',
         link: '/calculator'
     }, {
         label: 'Charts',
+        icon: 'fa-solid fa-chart-line',
         link: '/charts'
     }
   ];

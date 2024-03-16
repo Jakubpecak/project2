@@ -7,4 +7,21 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  offerList = [
+    {
+      icon: 'fa-house',
+      title: 'House',
+      content: 'This is content',
+      color: '',
+      background: ''
+    },
+    {
+      icon: 'fa-house',
+      title: 'Flat',
+      content: 'This is content',
+      color: '',
+      background: ''
+    }
+  ];
+
 }

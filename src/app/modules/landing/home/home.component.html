@@ -1,1 +1,29 @@
-<p>home works!</p>
+<div class="home p-10">
+    <section class="flex flex-col items-center justify-center" [ngStyle]="{'background': 'red'}">
+        <h1>Find your <span>Dream</span> Home</h1>
+        <h2>To get started <a routerLink="/register">sign up</a> or select your preferred property</h2>
+        <div class="select-property flex p-10 gap-20">
+            <div class="house flex flex-col cursor-pointer" routerLink="/property">
+                <img src="/assets/images/house.png" alt="house">
+                <p class="text-center">Houses</p>
+            </div>
+            <div class="flat flex flex-col cursor-pointer" routerLink="/property">
+                <img src="/assets/images/flat.png" alt="flat">
+                <p class="text-center">Flats</p>
+            </div>
+        </div>
+    </section>
+    <section class="flex flex-col" [ngStyle]="{'background': 'green'}">
+        <h3>What we offer</h3>
+        <div class="offers flex gap-20">
+            <div class="single-offer rounded-lg border border-gray-300 bg-gray-200 shadow-md" *ngFor="let offer of offerList">
+                <div class="icon-box p-20 flex justify-center items-center h-1/2 border-b border-gray-300">
+                    <i [class]="'fa-solid ' + offer.icon"></i>
+                </div>
+                <div class="text-box p-20 flex justify-center items-center h-1/2">
+                    <p>{{ offer.title }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

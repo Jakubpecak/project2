@@ -19,7 +19,9 @@ h1,h2,h3,h4,h5,h6,p,ul,ol,li,figure,blockquote,input,select,textarea {margin: 0;
 
 ol, ul {list-style: none;}
 
-h1,h2,h3,h4,h5,h6,p,ul,ol,li,a,p {color: $color;}
+h1,h2,h3,h4,h5,h6,p,ul,ol,li,p {color: $color;}
+
+a {color: blue}
 
 span {color: $span-color}
 

@@ -3,8 +3,20 @@
         <img src="/assets/images/logo.png" alt="logo" class="logo">
     </a>
     <mat-tab-group>
-        <mat-tab [label]="'Dashboard'"></mat-tab>
-        <mat-tab [label]="link.label" *ngFor="let link of navLinks"></mat-tab>
-        <mat-tab [label]="'Login'"></mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <i class="fa-solid fa-table-columns pr-5"></i><p>Dashboard</p>
+          </ng-template>
+        </mat-tab>
+        <mat-tab *ngFor="let link of navLinks">
+          <ng-template mat-tab-label>
+            <i [class]="link.icon + ' pr-5'"></i><p>{{ link.label }}</p>
+          </ng-template>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <i class="fa-solid fa-user pr-5"></i><p>Login</p>
+          </ng-template>
+        </mat-tab>
     </mat-tab-group>
 </nav>

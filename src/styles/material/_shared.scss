@@ -1,4 +1,5 @@
 @use '@angular/material' as mat;
+@import '../material/mat-tab/mat-tab';
 @include mat.core();
 $project2-primary: mat.define-palette(mat.$orange-palette, 700);
 $project2-accent: mat.define-palette(mat.$pink-palette);
@@ -19,3 +20,4 @@ $project2-theme: mat.define-light-theme((
 ));
 
 @include mat.all-component-themes($project2-theme);
+
