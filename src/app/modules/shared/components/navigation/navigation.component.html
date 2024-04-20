@@ -3,14 +3,11 @@
         <img src="/assets/images/logo.png" alt="logo" class="logo">
     </a>
     <mat-tab-group>
-        <mat-tab>
-          <ng-template mat-tab-label>
-            <i class="fa-solid fa-table-columns pr-5"></i><p>Dashboard</p>
-          </ng-template>
-        </mat-tab>
         <mat-tab *ngFor="let link of navLinks">
           <ng-template mat-tab-label>
-            <i [class]="link.icon + ' pr-5'"></i><p>{{ link.label }}</p>
+            <a [routerLink]="link.link">
+              <i [class]="link.icon + ' pr-5'"></i><p>{{ link.label }}</p>
+            </a>
           </ng-template>
         </mat-tab>
         <mat-tab>

@@ -9,6 +9,10 @@ import { GalleryModule } from 'ng-gallery';
 import { ChartComponent } from './components/chart/chart.component';
 import { BaseChartDirective } from 'ng2-charts';
 import { RouterModule } from '@angular/router';
+import { AgGridModule } from 'ag-grid-angular';
+import { ButtonComponent } from './components/ag-grid-table/button/button.component';
+import { SelectEditorComponent } from './components/ag-grid-table/select-editor/select-editor.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,7 +21,9 @@ import { RouterModule } from '@angular/router';
     NavigationComponent,
     FooterComponent,
     GalleryComponent,
-    ChartComponent
+    ChartComponent,
+    ButtonComponent,
+    SelectEditorComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +31,9 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     MatTabsModule,
     GalleryModule,
-    BaseChartDirective
+    BaseChartDirective,
+    AgGridModule,
+    ReactiveFormsModule
   ],
   exports: [
     NavigationComponent,
@@ -35,7 +43,9 @@ import { RouterModule } from '@angular/router';
     GalleryModule,
     GalleryComponent,
     ChartComponent,
-    BaseChartDirective
+    BaseChartDirective,
+    AgGridModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }

@@ -9,6 +9,11 @@ export class NavigationComponent {
   scroll: boolean = false;
   navLinks = [
     {
+      label: 'Dashboard',
+      icon: 'fa-solid fa-table-columns',
+      link: '/dashboard'
+    },
+    {
         label: 'Properties',
         icon: 'fa-solid fa-city',
         link: '/properties'
