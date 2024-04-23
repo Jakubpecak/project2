@@ -1,69 +1,105 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable, from, map, of, switchMap } from 'rxjs';
+import { Router } from '@angular/router';
+import { BehaviorSubject, map, tap } from 'rxjs';
 
-interface User {
-  id?: string;
-  name?: string;
-  photo?: string;
+interface Session {
+  token: string | null;
+  refreshToken?: string;
+  userId?: number;
+  userType?: string;
+}
+
+interface Tokens {
+  token?: string;
+  refreshToken?: string;
+}
+
+interface Credentials {
+  username?: string;
+  password?: string;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  session = new BehaviorSubject<Session | null>(this.getStoredSession());
+  isAuthenticated: boolean = false;
 
-  constructor(private afAuth: AngularFireAuth, private firestore: AngularFirestore) { }
+  url = 'http://localhost:3000/login';
+
+  constructor(private http: HttpClient, private router: Router) {}
+
+  state = this.session.pipe(
+    map(session => !!session),
+    tap(state => {
+      this.isAuthenticated = state
+    })
+  );
+
+  login(credentials: Credentials) {
+    return this.http.post<Session>(this.url, credentials).pipe(
+      tap(session => {
+        console.log('login', session)
+        this.session.next(session);
+        this.setStoredSession(session);
+        this.router.navigate(['/dashboard']);
+      })
+    )
+  }
+
+  logout() {
+    localStorage.removeItem('session');
+    const session = this.session.getValue();
+    if (session) {
+      this.session.next(null);
+      this.router.navigate(['/login']);
+    }
+  }
+
+  refreshToken(tokens: Tokens) {
+    return this.http.post<Session>('/refresh', tokens).pipe(
+      tap(session => {
+        this.session.next(session);
+        this.setStoredSession(session);
+      })
+    )
+  }
   
-  login(email: string, password: string) {
-    return from(this.afAuth.signInWithEmailAndPassword(email, password));
+  getTokens() {
+    const session = this.session.getValue();
+    if (session && session?.token && session?.refreshToken) {
+      return {
+        token: session?.token,
+        refreshToken: session?.refreshToken
+      }
+    } else {
+      return {
+        token: '',
+        refreshToken: ''
+      }
+    }
   }
 
-  signUp(email: string, password: string) {
-    return from(this.afAuth.createUserWithEmailAndPassword(email, password));
+  getToken() {
+    const session = this.session.getValue();
+    return session && session?.token;
   }
 
-  addUser(user: { name: string, photo: string }) {
-    return this.firestore.collection('users').add(user);
+  getSession() {
+    const session = this.session.getValue();
+    return session ? session : null;
   }
 
-  getUsers(): Observable<User[]> {
-    return this.firestore.collection<User>('users').snapshotChanges().pipe(
-      map(actions => {
-        return actions.map(a => {
-          const data = a.payload.doc.data() as User;
-          const id = a.payload.doc.id;
-          return { id, ...data };
-        });
-      })
-    );
+  getStoredSession() {
+    const storedSession = localStorage.getItem('session');
+    return storedSession ? JSON.parse(storedSession) : null;
   }
 
-  getUser(): Observable<any> {
-    return this.afAuth.authState.pipe(
-      switchMap(user => {
-        if (user) {
-          return this.firestore.collection('users').doc(user.uid).valueChanges();
-        } else {
-          return of(null);
-        }
-      })
-    );
-  }
-
-  updateUserData(userUid: string, newData: User): Observable<void> {
-    return new Observable((observer) => {
-      this.firestore.collection('users').doc(userUid).update(newData)
-      .then(() => {
-        observer.next();
-        observer.complete();
-      })
-      .catch(error => {
-        console.error("Błąd aktualizacji danych: ", error);
-        observer.error(error);
-      });
-    });
+  setStoredSession(session: Session) {
+    console.log('set store', session)
+    localStorage.setItem('session', JSON.stringify(session));
   }
 
 

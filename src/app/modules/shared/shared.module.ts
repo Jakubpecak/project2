@@ -13,6 +13,9 @@ import { AgGridModule } from 'ag-grid-angular';
 import { ButtonComponent } from './components/ag-grid-table/button/button.component';
 import { SelectEditorComponent } from './components/ag-grid-table/select-editor/select-editor.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 
@@ -23,17 +26,20 @@ import { ReactiveFormsModule } from '@angular/forms';
     GalleryComponent,
     ChartComponent,
     ButtonComponent,
-    SelectEditorComponent
+    SelectEditorComponent,
+    SidenavComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
+    HttpClientModule,
     MatButtonModule,
     MatTabsModule,
     GalleryModule,
     BaseChartDirective,
     AgGridModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSidenavModule
   ],
   exports: [
     NavigationComponent,
@@ -45,7 +51,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     ChartComponent,
     BaseChartDirective,
     AgGridModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SidenavComponent,
+    MatSidenavModule
   ]
 })
 export class SharedModule { }

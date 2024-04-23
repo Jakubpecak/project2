@@ -1,5 +1,9 @@
-<app-navigation></app-navigation>
-<main>
+<app-sidenav *ngIf="isAuthenticated">
+  <app-navigation></app-navigation>
   <router-outlet></router-outlet>
-</main>
+</app-sidenav>
+<ng-container *ngIf="!isAuthenticated">
+  <app-navigation></app-navigation>
+  <router-outlet></router-outlet>
+</ng-container>
 <app-footer></app-footer>
